@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+//sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Chapter 4 - java 1', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+task displayJavaPluginConvention << {	
+	println "Lib Directory: $libsDir"
+	println "Lib Directory Name: $libsDirName"
+	println "Reports Directory: $reportsDir"
+	println "Test Result Directory: $testResultsDir"
+	
+	println "Source Code in two sourcesets: $sourceSets"
+	println "Production Code: ${sourceSets.main.java.srcDirs}"
+	println "Test Code: ${sourceSets.test.java.srcDirs}"
+	println "Production code output: ${sourceSets.main.output.classesDir} & ${sourceSets.main.output.resourcesDir}"
+	println "Test code output: ${sourceSets.test.output.classesDir} & ${sourceSets.test.output.resourcesDir}"	
+}

@@ -1,0 +1,15 @@
+import ch4.FilePlugin
+//apply plugin: FilePlugin
+
+copy.doLast {
+println "This is main project copy dolast"
+}
+
+/*
+project(':project1') {
+	apply plugin: FilePlugin
+	copy.doLast {
+		println "Additional doLast for subproject"
+	}
+}
+*/

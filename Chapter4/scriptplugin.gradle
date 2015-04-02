@@ -1,0 +1,4 @@
+task scriptPluginTask1 << {
+	println "this is scplugin1"
+}
+

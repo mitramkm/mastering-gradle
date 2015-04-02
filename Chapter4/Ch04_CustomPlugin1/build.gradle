@@ -1,0 +1,17 @@
+apply plugin: FilePlugin
+
+class FilePlugin implements Plugin<Project> {
+	void apply(Project project) {
+		project.task('copy') << {
+			println "Task copy is running"
+			//....
+		}
+		project.task('move') << {
+			println "Task move is running"
+			//...
+		}		
+	}
+}
+
+
+copy.doLast {println "Copy Task ending .." }

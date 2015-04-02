@@ -1,0 +1,8 @@
+import ch4.FilePlugin
+
+
+apply plugin: FilePlugin
+        
+copy.doLast {
+     println "Additional doLast for project2"
+}

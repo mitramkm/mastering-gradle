@@ -1,0 +1,77 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+buildDir = 'buildfolder'
+libsDirName = 'libfolder'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/productioncode/java'
+		}
+		resources {
+			srcDir 'src/productioncode/resources'
+		}
+	}
+	test{
+		
+		java {
+			srcDir 'src/testcode/java'
+		}
+		resources {
+			srcDir 'src/testcode/resources'
+		}		
+	}
+}
+
+testResultsDirName = "$buildDir/new-test-result"
+sourceSets.main.output.classesDir "$buildDir/classes/productioncode/java"
+sourceSets.main.output.resourcesDir "$buildDir/classes/productioncode/resources"
+sourceSets.test.output.classesDir "$buildDir/classes/testcode/java"
+sourceSets.test.output.resourcesDir "$buildDir/classes/testcode/resources"
+
+//sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Chapter 4 - java 1', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+	testCompile 'org.testng:testng:6.8.21'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+task displayJavaPluginConvention << {
+	
+	println "Lib Directory: $libsDir"
+	println "Lib Directory Name: $libsDirName"
+	println "Reports Directory: $reportsDir"
+	println "Test Result Directory: $testResultsDir"
+	
+	println "Source Code in two sourcesets: $sourceSets"
+	println "Production Code: ${sourceSets.main.java.getSrcDirs()}"
+	println "Test Code: ${sourceSets.test.java.srcDirs}"
+	println "Production code output: ${sourceSets.main.output.classesDir} & ${sourceSets.main.output.resourcesDir}"
+	println "Test code output: ${sourceSets.test.output.classesDir} & ${sourceSets.test.output.resourcesDir}"
+
+	
+}

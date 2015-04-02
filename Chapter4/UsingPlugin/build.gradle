@@ -1,0 +1,14 @@
+
+buildscript {
+	repositories {
+		flatDir {dirs "../Ch04_CustomPlugin3/build/libs/"}
+	}
+	dependencies {
+		classpath group: 'ch4.custom.plugin', name: 'Ch04_CustomPlugin3',version: '1.0'
+	}
+}
+apply plugin: 'fileplugin'
+
+copy.doLast {
+	println "This is from project $project.name"
+}

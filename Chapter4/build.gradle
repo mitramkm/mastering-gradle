@@ -1,0 +1,5 @@
+apply from: 'scriptplugin.gradle'
+
+task mainTask << {
+	println "This is main task"
+}
