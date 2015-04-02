@@ -1,0 +1,10 @@
+task showProps << {
+println "local property "+Proj1Prop1
+println "local property "+Proj1Prop2
+println "local property via command line: "+projCommandProp1
+println "global property "+ globalProp1
+println "global property "+globalProp2
+println "System property "+System.properties['sysProp1']
+println "System property via command line: "+System.properties['sysCommandProp1']
+
+}

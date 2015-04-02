@@ -1,0 +1,30 @@
+apply plugin:'java'
+apply plugin:'eclipse'
+
+/*
+test{
+	useTestNG()
+      	ignoreFailures = true
+	maxParallelForks = 2
+	forkEvery = 1
+}
+*/
+
+test {
+		ignoreFailures = true
+        maxParallelForks = 2
+        forkEvery = 1
+	useTestNG(){
+		//includeGroups 'Smoke'
+		//listeners << 'org.testng.reporters.EmailableReporter'
+		suites("src/test/resources/testng.xml")
+	}
+}
+
+
+repositories {
+	mavenCentral()
+}
+dependencies {
+	testCompile 'org.testng:testng:6.8.21'
+}

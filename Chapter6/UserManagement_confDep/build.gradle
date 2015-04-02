@@ -1,0 +1,11 @@
+println "Project name is $name"
+allprojects {
+	version = '2.0'
+}
+
+subprojects { // for all subProjects
+	apply plugin: 'java'
+	repositories {
+		mavenCentral()
+	}
+}

@@ -1,0 +1,13 @@
+apply plugin:'java'
+test {
+	ignoreFailures = true
+	maxParallelForks = 3
+	forkEvery = 1
+}
+repositories {
+	mavenCentral()
+}
+dependencies {
+	testCompile 'junit:junit:4.12'
+
+}

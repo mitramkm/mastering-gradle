@@ -1,0 +1,56 @@
+println "Project name is $name"
+
+ext.profileDetail = "default profile"
+
+
+allprojects {
+	version = '2.0'
+}
+
+subprojects { // for all subProjects
+	apply plugin: 'java'
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		compile 'log4j:log4j:1.2.16'
+	}
+
+}
+/*
+project(':department') { 
+
+	println "Project name is $name"
+
+	task departmentTask << {
+		println "Task name is $name"
+	}
+}
+*/
+project(':login') { 
+	println "Project name is $name"
+	dependencies {
+		compile project(':profile')
+	}
+	task loginTask (dependsOn: ":profile:profileTask")<< {
+		println "Task name is $name"
+	}
+}
+
+
+project(':profile') { 
+	println "Project name is $name"
+	task profileTask << {
+		println "Task name is $name"
+	}
+}
+
+
+project(':transactions') { 
+	println "Project name is $name"
+	task transactionTask << {
+		println "Task name is $name"
+	}
+
+}
+

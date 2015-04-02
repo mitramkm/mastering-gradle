@@ -1,0 +1,105 @@
+import groovy.io.FileType
+task showFile << {
+	File file1 = new File("readme.txt")
+	println file1
+	file1.eachLine {
+		println it
+	}
+}
+
+task fileWrite << {
+	File file1 = new File("readme.txt")
+	file1.append("\nAdding new line. \n")
+	//file1.setText("Overwriting existing contents")
+	//file1.write("Using write method")
+}
+
+task createFile << {
+	File file1 = new File("newFile1.txt")
+	file1.write("Using write method")
+	//file1 << "New contents"
+}
+task createNewFile << {
+	File file1 = new File("createNewFileMethod.txt")
+	file1.createNewFile()
+}
+
+task fileOperations << {
+	File file1 = new File("readme.txt")
+	println "File size is "+file1.size()
+
+	println "Checking existance "+file1.exists()
+	println "Reading contents "+file1.getText()
+	println "Checking directory "+file1.isDirectory()
+	println "File length "+file1.length()
+	println "Hidden file "+file1.isHidden()
+
+	// File paths
+	println "File path is "+file1.path
+	println "File absolute path is "+file1.absolutePath
+	println "File canonical path is "+file1.canonicalPath
+	// rename file
+	file1.renameTo("writeme.txt")
+}
+
+task filePermission << {
+	File file1 = new File("readme.txt")
+	file1.setReadOnly()
+	println "Checking read permission "+ file1.canRead()+" write permission "+file1.canWrite()
+	file1.setWritable(true)
+	println "Checking read permission "+ file1.canRead()+" write permission "+file1.canWrite()
+
+}
+
+task createDir << {
+	def dir1 = new File("folder1")
+	dir1.mkdir()
+
+	def dir2 = new File("folder2")
+	dir2.createTempDir()
+	println "Directory size is "+dir2.size()
+	println "Directory path is "+dir2.absolutePath
+
+	def dir3 = new File("folder3/subfolder31")
+	dir3.mkdirs()
+}
+
+task browseDir << {
+	def dir1 = new File("dir1")
+	dir1.eachFileRecurse {
+		println it
+	}
+	println "  Printing only files "
+	dir1.eachFileRecurse(FileType.FILES) {
+		println it
+	}
+	println " Printing only directories "
+	dir1.eachFileRecurse(FileType.DIRECTORIES) {
+		println it
+	}
+}
+task filterFiles << {
+	def dir1 = new File("dir1")
+	dir1.eachFileMatch(~/.*.groovy/) {
+			println it
+		}
+	dir1.eachFileRecurse { dir ->
+		if(dir.isDirectory()) {
+			dir.eachFileMatch(~/.*.groovy/) {
+				println it
+			}
+		}
+	}
+
+}
+task deleteFile << {
+	def dir1 = new File("dir2")
+	def file1 = new File("abc.txt")
+	file1.createNewFile()
+	dir1.mkdir()
+	println "File path is "+file1.absolutePath
+	println "Dir path is "+dir1.absolutePath
+	file1.delete()
+	dir1.deleteDir()
+	println "Check file existence  "+file1.exists()+" Directory existence  "+dir1.exists()
+}

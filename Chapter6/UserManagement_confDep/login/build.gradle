@@ -1,0 +1,5 @@
+evaluationDependsOn(':profile')
+println "Project name is $name"
+task loginTask << {
+	println "Task name is $name profile detail is "+rootProject.profileDetail
+}

@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'eclipse'
+
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'ScalaApplication', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile('org.scala-lang:scala-library:2.11.6')
+	runtime('org.scala-lang:scala-compiler:2.11.6')
+	compile('org.scala-lang:jline:2.9.0-1')
+}
+
+
+sourceSets.all{
+	//println name;
+	//println scala;
+	//println allScala;
+}
+
+
+task displayScalaPluginConvention << {	
+	println "Lib Directory: $libsDir"
+	println "Lib Directory Name: $libsDirName"
+	println "Reports Directory: $reportsDir"
+	println "Test Result Directory: $testResultsDir"
+	
+	println "Source Code in two sourcesets: $sourceSets"
+	println "Production Code: ${sourceSets.main.java.srcDirs}, ${sourceSets.main.scala.srcDirs}"
+	println "Test Code: ${sourceSets.test.java.srcDirs}, ${sourceSets.test.scala.srcDirs}"
+	println "Production code output: ${sourceSets.main.output.classesDir} & ${sourceSets.main.output.resourcesDir}"
+	println "Test code output: ${sourceSets.test.output.classesDir} & ${sourceSets.test.output.resourcesDir}"	
+}
+
+
+task runMain(type: JavaExec){
+	main = 'ch6.HelloScala'
+	classpath = configurations.runtime + sourceSets.main.output + sourceSets.test.output
+}

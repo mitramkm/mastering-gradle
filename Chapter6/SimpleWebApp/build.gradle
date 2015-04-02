@@ -1,0 +1,16 @@
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	providedCompile "javax.servlet:servlet-api:2.5"
+	compile("commons-io:commons-io:2.4")
+	compile 'javax.inject:javax.inject:1'
+}
+

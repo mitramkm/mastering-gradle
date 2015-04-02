@@ -1,0 +1,21 @@
+apply plugin:'java'
+test {
+	ignoreFailures = true
+    filter {
+	// 1: execute only login test cases
+        //includeTestsMatching "com.test.login.*"
+
+        //2: include all test cases matching *Test
+        //includeTestsMatching "*Test"
+
+        //3: include all integration tests having 1 in their name
+        includeTestsMatching "*1"
+    }
+}
+repositories {
+	mavenCentral()
+}
+dependencies {
+	testCompile 'junit:junit:4.12'
+
+}
