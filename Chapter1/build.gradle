@@ -1,0 +1,3 @@
+task helloGradle << {
+	println 'Hello Gradle- This is your first script'
+}

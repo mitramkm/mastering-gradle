@@ -1,0 +1,15 @@
+println "Hello from init script"
+projectsLoaded {
+    rootProject.allprojects {
+	buildscript {
+	    repositories {
+		maven {
+			url "http://central.maven.org/maven2/"
+		}
+	    }
+	    dependencies {
+                        classpath group: 'javax.mail', name: 'javax.mail-api', version: '1.4.5'
+	    }
+	}
+    }   
+ } 	
