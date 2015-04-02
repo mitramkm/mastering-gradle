@@ -1,0 +1,15 @@
+ext {
+ 	environment='prod'
+	// can set this value from property file or command line using -Pname=value option
+}
+
+task prodTask << {
+	println 'Executing prod tasks '+environment
+}
+prodTask.onlyIf { project.has('environment') && project.environment=='prod' }
+
+task qaTask << {
+	println 'Executing qatasks '+environment
+}
+qaTask.onlyIf { project.has('environment') && project.environment=='qa' }
+

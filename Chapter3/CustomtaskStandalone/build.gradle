@@ -1,0 +1,18 @@
+
+buildscript {
+repositories {
+	flatDir {dirs "../sampleTaskProj/build/libs"}
+}
+dependencies {
+classpath group: 'com.test', name: 'sampleTaskProj',version: '1.0'
+}
+}
+
+task hello(type: com.test.SampleTask)
+
+hello {
+	systemName='MyDevelopmentMachine'
+	systemGroup='Development'
+}
+hello.doFirst {println "Executing first statement "} // can add actions even later in build file
+hello.doLast {println "Executing last statement "}

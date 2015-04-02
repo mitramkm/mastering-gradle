@@ -1,0 +1,8 @@
+task sampleTask12 << {
+println " This task is disabled"
+}
+
+task sampleTask13 (dependsOn: sampleTask12) << {
+println "This task depends on task12"
+}
+sampleTask12.enabled = false

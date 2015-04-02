@@ -1,0 +1,25 @@
+println "Copying task"
+task copyTask(type: Copy) {
+	from "."
+	into "abc"
+	include('employees.xml')
+	rename { String fileName ->
+	fileName.replace("employees", "abc")
+	}
+}
+
+task copyWithRename(type: Copy) {
+	from "."
+	into "dir1"
+	include('employees.xml')
+	rename { String fileName ->
+	fileName.replace("employees", "abc")
+	}
+}
+
+task zipTask(type: Zip) {
+	File destDir = new File("dest")
+	archiveName "sample.zip"
+	from "src"
+	destinationDir destDir
+}

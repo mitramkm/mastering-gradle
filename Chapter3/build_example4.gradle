@@ -1,0 +1,30 @@
+
+task updateExample {
+ext {
+propXml = file('PropDetails.xml')
+//dest = new File('conf')
+// in case you want to mention output parameter as dir
+}
+File envFile = file('envproperty.txt')
+File sysFile = file('sysproperty.txt')
+
+//dest.mkdirs()
+//ext.destDir = new File(buildDir, 'generated')
+
+inputs.file propXml
+outputs.files (envFile, sysFile)
+//outputs.upToDateWhen { 1 == 1 }
+//outputs.dir dest
+
+doLast {
+println "Generating Properties files"
+def properties = new XmlParser().parse(propXml)
+properties.property.each { property ->
+def fileName = property.filedetail[0].name[0].text()
+def key = property.filedetail[0].key[0].text()
+def value = property.filedetail[0].value[0].text()
+def destFile = new File("${fileName}")
+destFile.text = "$key = ${value}\n"
+}
+}
+}

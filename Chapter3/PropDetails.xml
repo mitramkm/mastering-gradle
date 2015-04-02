@@ -1,0 +1,16 @@
+<properties>
+	<property>
+		<filedetail>
+			<name>envproperty.txt</name>
+			<key>env</key>
+			<value>prod</value>
+		</filedetail>
+	</property>
+	<property>
+		<filedetail>
+			<name>sysproperty.txt</name>
+			<key>memory</key>
+			<value>1024</value>
+		</filedetail>
+	</property>
+</properties>

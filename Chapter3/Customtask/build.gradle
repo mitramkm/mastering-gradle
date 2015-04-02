@@ -1,0 +1,24 @@
+println "Working on custom task in build script"
+
+class SampleTask extends DefaultTask {
+	String systemName = "DefaultMachineName"
+	String systemGroup = "DefaultSystemGroup"
+	@TaskAction
+	def action1() {
+println "System Name is "+systemName+" and group is "+systemGroup
+		}
+	@TaskAction
+	def action2() {
+		println 'Adding multiple actions for refactoring'
+	}
+
+}
+
+task hello(type: SampleTask)
+
+hello {
+	systemName='MyDevelopmentMachine'
+	systemGroup='Development'
+}
+hello.doFirst {println "Executing first statement "} // can add actions even later in build file
+hello.doLast {println "Executing last statement "}

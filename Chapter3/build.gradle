@@ -1,0 +1,52 @@
+// Section 1: Project object existing properties
+version = '1.0' 
+description = 'Sample Java Project' 
+
+// Section 2: Project level custom properties
+ext { 
+	startDate="Jan 2015"
+}
+ext.endDate = "Dec 2015"
+
+println "This is project configuration part, description is $description"
+
+// Section 3: Task
+task sampleTask1{
+	// Section 3.1: Task existing properties
+	description = "This is task level description" 
+	// Section 3.2: Task level custom properties
+	ext { 
+		taskDetail=" This is custom property of task1"
+
+	}
+	println "This is sampleTask1 configuration statements, taskDetail is $taskDetail"
+	
+	// Section 3.3: Task actions
+	doFirst {
+		println "Project name is $project.name, description is $project.description"
+		println "Task name is $name, description is $description"
+		println "Project start date is $startDate"
+	}
+	doLast {
+			println "Project endDate is $endDate"
+	}
+	
+}
+// Section 4 : Task
+task sampleTask2 {
+	println "This is sampleTask2 configuration statements"
+
+doFirst {
+		println "Task getProjectDetailsTask properties are "+sampleTask1.taskDetail
+	}
+}
+
+task sampleTask3 << {
+	println "Executing task3"
+}
+sampleTask3.doFirst {println "Adding doFirst action" }
+
+
+// Extra statements added later
+sampleTask2.doFirst { println "Actions added separately" }
+sampleTask2.doLast { println " More Actions added " }
