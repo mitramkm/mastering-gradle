@@ -1,0 +1,18 @@
+apply plugin: 'java'
+archivesBaseName="MySample" // to customize Jar Name
+version=1.0
+repositories {
+	mavenCentral()
+}
+task zipSrc(type: Zip) {
+	from 'src'
+}
+artifacts {
+	archives zipSrc
+}
+
+uploadArchives {
+	repositories {
+		flatDir {dirs "./temp1" }
+	}
+}

@@ -1,0 +1,17 @@
+apply plugin:'java'
+
+repositories {
+	mavenCentral()
+}
+/*
+dependencies {
+	compile group:'commons-httpclient', name:'commons-httpclient', version:'3.1'
+	compile group:'commons-codec',name:'commons-codec', version:'1.1', force:true
+}
+*/
+
+dependencies {
+	 compile module(group:'commons-httpclient', name:'commons-httpclient', version:'3.1') {
+		dependencies "commons-codec:commons-codec:1.1@jar"
+	}
+}

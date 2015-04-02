@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+
+publishing {
+	publications {
+		plugin(MavenPublication) {
+			from components.java
+			groupId 'org.mygroup'
+			artifactId 'MySampleProj'
+			version '1.0'
+
+		pom.withXml {
+			def root = asNode()
+			root.appendNode('name', 'Sample Project')
+			root.appendNode('description', 'Adding Additional details')
+			def devs = root.appendNode('developers')
+			def dev = devs.appendNode('developer')
+			dev.appendNode('name', 'DeveloperName')
+			}
+		}
+	}
+}
+

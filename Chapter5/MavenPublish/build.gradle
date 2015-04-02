@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+
+publishing {
+	publications {
+		plugin(MavenPublication) {
+			from components.java
+			groupId 'org.mygroup'
+			artifactId 'MySampleProj'
+			version '1.0'
+		}
+	}
+}
+
