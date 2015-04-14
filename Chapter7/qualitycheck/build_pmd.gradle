@@ -9,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+pmd{
+	ignoreFailures = true
+}
+
 dependencies {
 	compile gradleApi()
 	compile localGroovy()
