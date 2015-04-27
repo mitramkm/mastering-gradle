@@ -1,0 +1,38 @@
+<project name="sampleProject" default="makeJar" basedir=".">
+
+<property name="src" location="src/main/java"/>
+<property name="build" location="build"/>
+<property name="classes" location="build/classes"/>
+<property name="libs" location="build/libs"/>
+<property name="distributions" location="build/distributions"/>
+<property name="version" value="1.0"/>
+
+<target name="setup" depends="clean">
+	<mkdir dir="${classes}"/>
+	<mkdir dir="${distributions}"/>
+</target>
+
+<target name="compile" depends="setup" description="compile the source">
+	<javac srcdir="${src}" destdir="${build}/classes"  includeantruntime="false"/>
+</target>
+<target name="makeJar" depends="compile" description="generate the distributions">
+	<jar jarfile="${libs}/sampleproject-${version}.jar" basedir="${classes}"/>
+</target>
+<target name="clean" description="clean up">
+	<delete dir="${build}"/>
+</target>
+
+<target name="zip" description="zip the jar and checksum" depends="checksum">
+	<zip destfile="${distributions}/sampleproject.zip" filesonly="true" basedir="${libs}" includes="*.checksum,*.jar"  />
+</target>
+
+<target name="checksum" description="generate checksum and store in file" depends="makeJar">
+	<checksum file="${libs}/sampleproject-${version}.jar" property="sampleMD5"/>
+	<echo file="${libs}/sampleproject.checksum" message="checksum=${sampleMD5}"/>
+</target>
+
+<target name="GradleProperties">
+<echo message="Gradle comments are:: ${comments}"/>
+</target>
+
+</project>

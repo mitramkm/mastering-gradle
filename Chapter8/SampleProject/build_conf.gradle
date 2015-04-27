@@ -1,0 +1,57 @@
+apply plugin:'java'
+
+def src="src/main/java"
+def build="build"
+def libs="build/libs"
+def classes = "build/classes"
+def distributions="build/distributions"
+def version=1.0
+
+
+task setup(dependsOn:'cleanDir') << {
+	def classesDir = new File('build/classes')
+	def distDir = new File('build/distributions')
+	classesDir.mkdirs()
+	distDir.mkdirs()
+}
+
+task cleanDir(type: Delete) {
+  delete "${build}"
+}
+
+compileJava {
+	File classesDir = new File("build/classes")
+	FileTree srcDir = fileTree(dir: 'src/main/java')
+	source srcDir
+	destinationDir classesDir
+}
+
+task myJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Sample Project',  
+        	'Implementation-Version': version,
+        	'Main-Class': 'com.test.SampleTask'
+    }
+    baseName = project.name +"-" +version
+    from "build/classes"
+    into project.libsDir
+}
+
+
+
+task zip(type: Zip) {
+    from "${libsDir}"
+    destinationDir project.distsDir
+}
+
+task checksum << {
+	ant.checksum(file:"${libsDir}/${project.name}-${version}.jar",property:"sampleMD5")
+	ant.echo(file:"${libsDir}/${project.name}.checksum",message:"checksum=${ant.sampleMD5}")
+}
+
+myJar.dependsOn setup
+compileJava.dependsOn myJar
+checksum.dependsOn compileJava
+zip.dependsOn checksum
+
+

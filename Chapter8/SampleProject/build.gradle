@@ -1,0 +1,20 @@
+apply plugin:'java'
+apply plugin:'eclipse'
+
+version = 1.0
+
+task zip(type: Zip) {
+	//extension zip
+    from "${libsDir}"
+    destinationDir project.distsDir
+	//archiveName project.name
+}
+
+task checksum << {
+	ant.checksum(file:"${libsDir}/${project.name}-${version}.jar",property:"sampleMD5")
+	ant.echo(file:"${libsDir}/${project.name}.checksum",message:"checksum=${ant.sampleMD5}")
+}
+
+zip.dependsOn checksum
+checksum.dependsOn build
+
