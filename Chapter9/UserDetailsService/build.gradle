@@ -1,0 +1,61 @@
+buildscript {
+	ext {
+		springBootVersion = '1.2.2.RELEASE'
+	}
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+compileJava {
+	targetCompatibility = 1.7
+}
+
+configurations {
+    providedRuntime
+}
+
+war {
+    baseName = 'userdetailsservice'
+}
+
+
+
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+	//mavenCentral()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}"){
+		exclude (group:"org.springframework.boot", module:"spring-boot-starter-tomcat")
+	}
+	providedCompile("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-starter-aop")
+	compile("org.springframework.boot:spring-boot-starter-test")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("commons-io:commons-io:2.4")
+	compile 'javax.inject:javax.inject:1'
+	compile("com.h2database:h2")
+	testCompile 'org.testng:testng:6.8.8'
+}
+
+test{
+	useTestNG()
+}
+
