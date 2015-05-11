@@ -12,16 +12,20 @@ import org.testng.annotations.Test;
 
 public class UserDetailsServiceTest {
 
-	private final String URL = "http://localhost:8080/userdetails";
+	private String URL = "http://localhost:8080/userdetails";
 	private RestTemplate resttemplate;
 
 	@BeforeClass
 	public void setup() {
 		resttemplate = new RestTemplate();
-		try {
-			populateDB();
-		} catch (SQLException e) {
-			e.printStackTrace();
+//		try {
+//			populateDB();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+		if(System.getProperty("url") != null && System.getProperty("url").length()!= 0){
+			URL = System.getProperty("url").trim();
+			System.out.println(URL);
 		}
 	}
 
@@ -48,10 +52,17 @@ public class UserDetailsServiceTest {
 		}
 	}
 
-	@Test
+	@Test(dependsOnMethods="createUser")
 	public void getUsers() {
 		User[] response = resttemplate.getForObject(URL, User[].class);
 		Assert.assertEquals(response.length, 1);
+	}
+	
+	@Test
+	public void createUser() {
+		User request = new User("User1", "User user", "user@abc.com");
+		User response = resttemplate.postForObject(URL, request, User.class);
+		System.out.println(response);
 	}
 
 }
