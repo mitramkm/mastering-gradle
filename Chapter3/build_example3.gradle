@@ -6,10 +6,10 @@ ext {
 task prodTask << {
 	println 'Executing prod tasks '+environment
 }
-prodTask.onlyIf { project.has('environment') && project.environment=='prod' }
+prodTask.onlyIf { project.hasProperty('environment') && project.environment=='prod' }
 
 task qaTask << {
 	println 'Executing qatasks '+environment
 }
-qaTask.onlyIf { project.has('environment') && project.environment=='qa' }
+qaTask.onlyIf { project.hasProperty('environment') && project.environment=='qa' }
 
