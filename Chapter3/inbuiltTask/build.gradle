@@ -18,7 +18,7 @@ task copyWithRename(type: Copy) {
 }
 
 task zipTask(type: Zip) {
-	File destDir = new File("dest")
+	File destDir = file("dest")
 	archiveName "sample.zip"
 	from "src"
 	destinationDir destDir
