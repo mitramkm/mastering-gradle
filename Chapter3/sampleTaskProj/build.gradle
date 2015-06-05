@@ -1,5 +1,5 @@
 apply plugin: 'groovy'
-
+apply plugin: 'eclipse'
 version=1.0
 
 dependencies {
