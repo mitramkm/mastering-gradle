@@ -4,11 +4,11 @@ repositories {
 	flatDir {dirs "../sampleTaskProj/build/libs"}
 }
 dependencies {
-classpath group: 'com.test', name: 'sampleTaskProj',version: '1.0'
+classpath group: 'ch3', name: 'sampleTaskProj',version: '1.0'
 }
 }
 
-task hello(type: com.test.SampleTask)
+task hello(type: ch3.SampleTask)
 
 hello {
 	systemName='MyDevelopmentMachine'
