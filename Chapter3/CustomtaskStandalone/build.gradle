@@ -1,6 +1,7 @@
 
 buildscript {
 repositories {
+        // relative path of sampleTaskProject jar file
 	flatDir {dirs "../sampleTaskProj/build/libs"}
 }
 dependencies {
