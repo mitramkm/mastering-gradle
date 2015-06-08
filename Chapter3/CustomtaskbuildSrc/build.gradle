@@ -1,5 +1,5 @@
 
-task hello(type: com.test.SampleTask)
+task hello(type: ch3.SampleTask)
 
 hello {
 	systemName='MyDevelopmentMachine'
