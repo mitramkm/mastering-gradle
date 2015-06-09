@@ -24,11 +24,11 @@ sourceSets {
 	}
 }
 
-testResultsDirName = "$buildDir/new-test-result"
-sourceSets.main.output.classesDir "$buildDir/classes/productioncode/java"
-sourceSets.main.output.resourcesDir "$buildDir/classes/productioncode/resources"
-sourceSets.test.output.classesDir "$buildDir/classes/testcode/java"
-sourceSets.test.output.resourcesDir "$buildDir/classes/testcode/resources"
+testResultsDirName = "${buildDir}/new-test-result"
+sourceSets.main.output.classesDir "${buildDir}/classes/productioncode/java"
+sourceSets.main.output.resourcesDir "${buildDir}/classes/productioncode/resources"
+sourceSets.test.output.classesDir "${buildDir}/classes/testcode/java"
+sourceSets.test.output.resourcesDir "${buildDir}/classes/testcode/resources"
 
 //sourceCompatibility = 1.5
 version = '1.0'
