@@ -12,3 +12,7 @@ apply plugin: 'fileplugin'
 copy.doLast {
 	println "This is from project $project.name"
 }
+filePluginExtension {
+	sourceFile = "/home/user1"
+}
+
