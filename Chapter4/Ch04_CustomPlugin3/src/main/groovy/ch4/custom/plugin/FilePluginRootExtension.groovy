@@ -2,7 +2,7 @@ package ch4.custom.plugin
 
 class FilePluginRootExtension {
 	
-	def sourceFile
+	def sourceFile = "/home/tmp"
 	def destinationFile
 
 }

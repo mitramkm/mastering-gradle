@@ -13,10 +13,13 @@ class FilePlugin implements Plugin<Project> {
 	@Override
 	public void apply(Project project) {
 		
-		def extension = project.extensions.create("simpleExt", FilePluginRootExtension)
+		def extension = project.extensions.create("filePluginExtension", FilePluginRootExtension)
 	
 		project.tasks.create("copy", CopyTask.class)
 		project.tasks.create("move", MoveTask.class)
+		project.task('customTask') << {
+			println "Source file is "+project.filePluginExtension.sourceFile
+		}
 	}
 
 }
