@@ -1,12 +1,12 @@
 
 buildscript {
-repositories {
-        // relative path of sampleTaskProject jar file
-	flatDir {dirs "../sampleTaskProj/build/libs"}
-}
-dependencies {
-classpath group: 'ch3', name: 'sampleTaskProj',version: '1.0'
-}
+	repositories {
+        	// relative path of sampleTaskProject jar file
+		flatDir {dirs "../SampleTaskProj/build/libs"}
+	}
+	dependencies {
+		classpath group: 'ch3', name: 'SampleTaskProj',version: '1.0'
+	}
 }
 
 task hello(type: ch3.SampleTask)
@@ -15,5 +15,6 @@ hello {
 	systemName='MyDevelopmentMachine'
 	systemGroup='Development'
 }
+
 hello.doFirst {println "Executing first statement "} // can add actions even later in build file
 hello.doLast {println "Executing last statement "}
