@@ -1,15 +1,15 @@
-<mountains>
-	<mountain>
-		<name>mountain1</name>
+<employees>
+	<employee>
+		<name>John</name>
 		<height>10</height>
-	</mountain>
-	<mountain>
-		<name>mountain2</name>
+	</employee>
+	<employee>
+		<name>Kelvin</name>
 		<height>11</height>
-	</mountain>
-	<mountain>
-		<name>mountain3</name>
+	</employee>
+	<employee>
+		<name>Mary</name>
 		<height>12</height>
-	</mountain>
+	</employee>
 
-</mountains>
+</employees>
