@@ -1,0 +1,16 @@
+(1..6).each {
+  task "sampleTask$it" << {
+	println "Executing $name"
+    }
+  }
+
+sampleTask1.dependsOn sampleTask2
+sampleTask3.dependsOn sampleTask2
+sampleTask5.finalizedBy sampleTask6
+sampleTask5.mustRunAfter sampleTask4
+
+//sampleTask1.dependsOn sampleTask2
+//sampleTask2.dependsOn sampleTask3
+//sampleTask3.mustRunAfter sampleTask1
+
+
