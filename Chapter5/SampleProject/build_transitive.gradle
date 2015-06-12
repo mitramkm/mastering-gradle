@@ -1,0 +1,18 @@
+apply plugin:'java'
+
+/*
+dependencies {
+	compile group:'commons-httpclient', name:'commons-httpclient', version:'3.1', transitive: true
+}
+*/
+
+dependencies{
+compile('commons-httpclient:commons-httpclient:3.1') {
+//	exclude group:'commons-codec'
+	exclude group:'commons-codec',module:'commons-codec'
+}
+}
+repositories {
+	mavenCentral()
+}
+
