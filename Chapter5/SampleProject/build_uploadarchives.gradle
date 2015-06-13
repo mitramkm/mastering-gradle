@@ -12,6 +12,6 @@ dependencies {
 
 uploadArchives {
 repositories {
-		flatDir {dirs "D:/temp1" }
+		flatDir {dirs "./temp1" }
 }
 }
