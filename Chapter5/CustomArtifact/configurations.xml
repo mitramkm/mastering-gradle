@@ -1,0 +1,15 @@
+<mountains>
+	<mountain>
+		<name>everest1</name>
+		<height>11</height>
+	</mountain>
+	<mountain>
+		<name>everest2</name>
+		<height>12</height>
+	</mountain>
+	<mountain>
+		<name>everest3</name>
+		<height>13</height>
+	</mountain>
+
+</mountains>
