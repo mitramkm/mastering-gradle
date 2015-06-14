@@ -1,10 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-
 publishing {
 	publications {
-		plugin(MavenPublication) {
+		mavenJava(MavenPublication) {
 			from components.java
 			groupId 'org.mygroup'
 			artifactId 'MySampleProj'
