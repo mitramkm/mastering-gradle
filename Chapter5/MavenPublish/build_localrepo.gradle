@@ -8,7 +8,7 @@ task zipSrc(type: Zip) {
 
 publishing {
 	publications {
-		maven(MavenPublication) {
+		mavenJava(MavenPublication) {
 			from components.java
 			groupId 'org.mygroup'
 			artifactId 'MySampleProj'
