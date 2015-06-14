@@ -3,18 +3,19 @@ apply plugin: 'maven-publish'
 
 task zipSrc(type: Zip) {
 	baseName = 'SampleSource'
-	classifier = 'source-'
 	from 'src'
 }
 
 publishing {
 	publications {
-		plugin(MavenPublication) {
+		mavenJava(MavenPublication) {
 			from components.java
 			groupId 'org.mygroup'
 			artifactId 'MySampleProj'
 			version '1.0'
-			artifact zipSrc
+			artifact zipSrc {
+				classifier "sources"
+			}
 			// artifact can be <Jar,Zip tasks which will generate jar,zip file>
 		}
 	}
