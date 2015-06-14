@@ -4,7 +4,7 @@ apply plugin: 'maven-publish'
 
 publishing {
 	publications {
-		plugin(MavenPublication) {
+		mavenCustom(MavenPublication) {
 			from components.java
 			groupId 'org.mygroup'
 			artifactId 'MySampleProj'
