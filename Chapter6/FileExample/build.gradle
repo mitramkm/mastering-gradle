@@ -1,6 +1,6 @@
 import groovy.io.FileType
 task showFile << {
-	File file1 = new File("readme.txt")
+	File file1 = file("readme.txt")
 	println file1
 	file1.eachLine {
 		println it
@@ -8,14 +8,14 @@ task showFile << {
 }
 
 task fileWrite << {
-	File file1 = new File("readme.txt")
+	File file1 = file("readme.txt")
 	file1.append("\nAdding new line. \n")
 	//file1.setText("Overwriting existing contents")
 	//file1.write("Using write method")
 }
 
 task createFile << {
-	File file1 = new File("newFile1.txt")
+	File file1 = new File("newFile.txt")
 	file1.write("Using write method")
 	//file1 << "New contents"
 }
@@ -28,7 +28,7 @@ task fileOperations << {
 	File file1 = new File("readme.txt")
 	println "File size is "+file1.size()
 
-	println "Checking existance "+file1.exists()
+	println "Checking existence "+file1.exists()
 	println "Reading contents "+file1.getText()
 	println "Checking directory "+file1.isDirectory()
 	println "File length "+file1.length()
@@ -93,13 +93,13 @@ task filterFiles << {
 
 }
 task deleteFile << {
-	def dir1 = new File("dir2")
+	def dir2 = new File("dir2")
 	def file1 = new File("abc.txt")
 	file1.createNewFile()
-	dir1.mkdir()
+	dir2.mkdir()
 	println "File path is "+file1.absolutePath
-	println "Dir path is "+dir1.absolutePath
+	println "Dir path is "+dir2.absolutePath
 	file1.delete()
-	dir1.deleteDir()
-	println "Check file existence  "+file1.exists()+" Directory existence  "+dir1.exists()
+	dir2.deleteDir()
+	println "Checking file(abc.txt) existence: "+file1.exists()+" and Directory(dir2) existence: "+dir2.exists()
 }
