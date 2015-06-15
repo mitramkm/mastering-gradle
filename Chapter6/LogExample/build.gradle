@@ -1,0 +1,11 @@
+task showLogging << {
+	println "This is println example"
+
+	logger.error "This is error message"
+	logger.quiet "This is quiet message"
+	logger.warn "This is WARNING message"
+	logger.lifecycle "This is LIFECYCLE message"
+	logger.info "This is INFO message"
+	logger.debug "This is DEBUG message"
+	assert 1 == 2
+}
