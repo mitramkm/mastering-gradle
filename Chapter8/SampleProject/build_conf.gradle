@@ -1,16 +1,16 @@
 apply plugin:'java'
 
 def src="src/main/java"
-def build="build"
-def libs="build/libs"
-def classes = "build/classes"
-def distributions="build/distributions"
+def build="$buildDir"
+def libs="$buildDir/libs"
+def classes = "$buildDir/classes"
+def distributions="$buildDir/distributions"
 def version=1.0
 
 
 task setup(dependsOn:'cleanDir') << {
-	def classesDir = file('build/classes')
-	def distDir = file('build/distributions')
+	def classesDir = file("${classes}")
+	def distDir = file("${distributions}")
 	classesDir.mkdirs()
 	distDir.mkdirs()
 }
@@ -20,8 +20,8 @@ task cleanDir(type: Delete) {
 }
 
 compileJava {
-	File classesDir = file("build/classes")
-	FileTree srcDir = fileTree(dir: 'src/main/java')
+	File classesDir = file("${classes}")
+	FileTree srcDir = fileTree(dir: "${src}")
 	source srcDir
 	destinationDir classesDir
 }
