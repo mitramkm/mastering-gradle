@@ -9,8 +9,8 @@ def version=1.0
 
 
 task setup(dependsOn:'cleanDir') << {
-	def classesDir = new File('build/classes')
-	def distDir = new File('build/distributions')
+	def classesDir = file('build/classes')
+	def distDir = file('build/distributions')
 	classesDir.mkdirs()
 	distDir.mkdirs()
 }
@@ -20,7 +20,7 @@ task cleanDir(type: Delete) {
 }
 
 compileJava {
-	File classesDir = new File("build/classes")
+	File classesDir = file("build/classes")
 	FileTree srcDir = fileTree(dir: 'src/main/java')
 	source srcDir
 	destinationDir classesDir
