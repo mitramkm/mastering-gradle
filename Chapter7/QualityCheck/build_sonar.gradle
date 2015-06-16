@@ -7,8 +7,8 @@ version = '1.0'
 sonarRunner {
 
 sonarProperties {
-	property "sonar.host.url", "http://10.8.161.114:9000"
-	property "sonar.jdbc.url", "jdbc:h2:tcp://10.8.161.114:9092/sonar"
+	property "sonar.host.url", "http://<IP_Address>:9000"
+	property "sonar.jdbc.url", "jdbc:h2:tcp://<IP_Address>:9092/sonar"
 	property "sonar.jdbc.driverClassName", "org.h2.Driver"
 	property "sonar.jdbc.username", "sonar"
 	property "sonar.jdbc.password", "sonar"
