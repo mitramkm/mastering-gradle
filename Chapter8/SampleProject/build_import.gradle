@@ -13,9 +13,9 @@ task showAntProperties << {
 ant.properties['comments'] = "This comments added in Gradle"
 
 GradleProperties.doFirst {
-	println "Adding additional behavior before ANT task operations"
+	println "Adding additional behavior before Ant task operations"
 }
 GradleProperties.doLast {
-	println "Adding additional behavior after ANT Task operations"
+	println "Adding additional behavior after Ant Task operations"
 }
 
