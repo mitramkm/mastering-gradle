@@ -1,12 +1,12 @@
 ant.importBuild 'build.xml'
 
 
-def version = ant.properties['version']
+def antVersion = ant.properties['version']
 def src = ant.properties['src']
 
 task showAntProperties << {
-	println "Version is "+version
-	println "Source location is "+src
+	println "Ant Version is "+ antVersion
+	println "Source location is "+ src
 
 }
 
