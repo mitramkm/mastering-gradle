@@ -9,11 +9,11 @@
    <version>1.0</version>
    <packaging>jar</packaging>
    <dependencies>
-<dependency>
-	<groupId>org.apache.commons</groupId>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
 		<artifactId>commons-lang3</artifactId>
 		<version>3.1</version>
 		<scope>compile</scope>
-</dependency>
-</dependencies>
- </project>
+	</dependency>
+   </dependencies>
+</project>
