@@ -62,7 +62,7 @@ public class UserDetailsServiceTest {
 	public void createUser() {
 		User request = new User("User1", "User user", "user@abc.com");
 		User response = resttemplate.postForObject(URL, request, User.class);
-		Assert.assertEquals(response.length, 1);
+		Assert.assertEquals(response.getEmail(), "user@abc.com");
 	}
 
 }
