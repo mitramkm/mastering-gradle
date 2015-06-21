@@ -29,7 +29,7 @@ public class UserDetailsServiceTest {
 		}
 	}
 
-	private void populateDB() throws SQLException {
+/*	private void populateDB() throws SQLException {
 		Connection con = null ;
 		try {
 			Class.forName("org.h2.Driver");
@@ -51,7 +51,7 @@ public class UserDetailsServiceTest {
 			con.close();
 		}
 	}
-
+*/
 	@Test(dependsOnMethods="createUser")
 	public void getUsers() {
 		User[] response = resttemplate.getForObject(URL, User[].class);
@@ -62,7 +62,7 @@ public class UserDetailsServiceTest {
 	public void createUser() {
 		User request = new User("User1", "User user", "user@abc.com");
 		User response = resttemplate.postForObject(URL, request, User.class);
-		System.out.println(response);
+		Assert.assertEquals(response.length, 1);
 	}
 
 }
