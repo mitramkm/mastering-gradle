@@ -1,6 +1,7 @@
 apply plugin: 'java'
 archivesBaseName="MySample" // to customize Jar Name
 version=1.0
+
 repositories {
 	mavenCentral()
 }
@@ -9,7 +10,7 @@ artifacts {
 	archives confFile
 }
 uploadArchives {
-repositories {
+	repositories {
 		flatDir {dirs "./tempRepo" }
-}
+	}
 }
