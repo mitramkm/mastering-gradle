@@ -40,15 +40,12 @@ task fileOperations << {
 	println "File canonical path is "+file1.canonicalPath
 	// rename file
 	file1.renameTo("writeme.txt")
-}
 
-task filePermission << {
-	File file1 = new File("readme.txt")
+	//File Permissions
 	file1.setReadOnly()
 	println "Checking read permission "+ file1.canRead()+" write permission "+file1.canWrite()
 	file1.setWritable(true)
 	println "Checking read permission "+ file1.canRead()+" write permission "+file1.canWrite()
-
 }
 
 task createDir << {
