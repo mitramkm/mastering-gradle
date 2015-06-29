@@ -100,3 +100,23 @@ task deleteFile << {
 	dir2.deleteDir()
 	println "Checking file(abc.txt) existence: "+file1.exists()+" and Directory(dir2) existence: "+dir2.exists()
 }
+
+task fileTreeSample << {
+	FileTree fTree = fileTree('dir1')
+	fTree.each {
+		println it.name 
+	}
+	FileTree fTree1 = fileTree('dir1') {
+		include '**/*.groovy'
+	}
+	println ""
+	fTree1.each {
+		println it.name
+	}
+	println ""
+FileTree fTree2 = fileTree(dir:'dir1',excludes:['**/*.groovy'])
+	fTree2.each {
+		println it.absolutePath
+	}
+}
+
