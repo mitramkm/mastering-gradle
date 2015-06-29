@@ -10,6 +10,9 @@ test {
 
         //3: include all integration tests having 1 in their name
         includeTestsMatching "*1"
+
+	//4: Other way to include/exclude packages
+	//include "ch6/profile/**"
     }
 }
 repositories {
