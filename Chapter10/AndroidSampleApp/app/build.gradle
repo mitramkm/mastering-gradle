@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "ch10.androidsampleapp"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("myCustomkey.keystore")
+            storePassword "welcome"
+            keyAlias "customKey"
+            keyPassword "welcome"
+        }
+    }
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        stag.initWith(buildTypes.release)
+        stag {
+            debuggable true
+        }
+    }
+
+    productFlavors {
+        phone{
+            applicationId "ch10.androidsampleapp"
+            minSdkVersion 14
+            targetSdkVersion 20
+
+            versionName "1.0-phone"
+        }
+        tab {
+            applicationId "ch10.androidsampleapp"
+            minSdkVersion 15
+            targetSdkVersion 22
+            versionName "1.0-tab"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.1.1'
+}
