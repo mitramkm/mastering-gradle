@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+tasks.addRule("Pattern: sync<repoServer>") { String taskName ->
+   if (taskName.startsWith("sync")) {
+       task(taskName) << {
+           println "Syncing from repository: " + (taskName - 'sync')
+       }
+   }
+}
