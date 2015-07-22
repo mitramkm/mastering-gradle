@@ -1,6 +1,6 @@
 # mastering-gradle
 
-This is source code repository of the book "Mastering Gradle". This book has ten chapters. All the examples explained in the book have been uploaded here -
+This is source code repository of the book **Mastering Gradle**. This book has ten chapters. All the examples explained in the book have been uploaded here.
 
 * Chapter 1 - Getting Started 
 * Chapter 2 - Groovy Essentials for Gradle 
