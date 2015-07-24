@@ -28,8 +28,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        stag.initWith(buildTypes.release)
-        stag {
+        staging.initWith(buildTypes.release)
+        staging {
             debuggable true
         }
     }
